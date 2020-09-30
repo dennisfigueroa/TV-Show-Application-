@@ -10,6 +10,11 @@ body {
     margin: 0; 
 }
 
+main {
+    display: flex;
+    flex-wrap: wrap; 
+}
+
 h1 {
     background-color: aquamarine;
 }
@@ -22,3 +27,4 @@ h1 {
 .movie img {
     width:100%;
 }
+
