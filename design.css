@@ -8,6 +8,7 @@ html {
 
 body {
     margin: 0; 
+    background-color: #85DCBA  !important;
 }
 
 main {
@@ -15,16 +16,32 @@ main {
     flex-wrap: wrap; 
 }
 
-h1 {
-    background-color: aquamarine;
-}
-
 .movie {
-    width: 400px;
-    height: 350px; 
+    width: 250px;
+    height: 400px;
+    border-radius: 3px; 
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2); 
+    margin:2rem; 
+    display:inline-block;github
+    background-color:  white !important;
+    
 }
-
 .movie img {
-    width:100%;
+   max-width: 100%;
+   height:auto;
+  
+    
+}
+.rating {
+
+color: black; 
+
+margin:0; 
+
 }
 
+main {
+    display:flex; 
+    flex-wrap: wrap; 
+    flex-direction: row;
+}

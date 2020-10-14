@@ -9,31 +9,50 @@ const creatingIMGTag = document.createElement('img');
 async function getTVShows() {
     const response = await fetch(apiCall);
     const information = await response.json(); 
+    
     console.log(information); 
+      getPosters(information); 
       RatingStars(information); 
     }
+
+    function getPosters(information) {
+      let html = ''; 
+      let counter = 0; 
+      information.results.forEach((tvShow) =>  {
+        counter = counter + 1; 
+        html += '<div class = "movie"><img src = "https://image.tmdb.org/t/p/w500/'+tvShow.poster_path+'"><div id = "starsForMovies'+counter+'" class ="rating"></div></div>';
+      });
+
+      document.body.innerHTML = html; 
+    }
+
+
       function RatingStars (information) {
+
+        let counter = 0; 
+
         information.results.forEach((tvShow) => {
 
+          counter = counter + 1; 
           if (tvShow.vote_average > 9.4) {
             const creatingIMGTag = document.createElement('img'); 
             creatingIMGTag.src = "stars/5.png"; 
-            document.body.appendChild(creatingIMGTag);
+            document.querySelector("#starsForMovies" + counter).append(creatingIMGTag);
           }
           if (tvShow.vote_average > 8.4 && tvShow.vote_average < 9.5) {
             const creatingIMGTag = document.createElement('img'); 
             creatingIMGTag.src = "stars/45.png"; 
-            document.body.appendChild(creatingIMGTag);
+            document.querySelector("#starsForMovies" + counter).append(creatingIMGTag);
           }
           if (tvShow.vote_average > 7.4 && tvShow.vote_average < 8.5) {
             const creatingIMGTag = document.createElement('img'); 
             creatingIMGTag.src = "stars/4.png"; 
-            document.body.appendChild(creatingIMGTag);
+            document.querySelector("#starsForMovies" + counter).append(creatingIMGTag);
           }
           if (tvShow.vote_average > 6.4 && tvShow.vote_average < 7.5) {
             const creatingIMGTag = document.createElement('img'); 
             creatingIMGTag.src = "stars/35.png"; 
-            document.body.appendChild(creatingIMGTag);
+            document.querySelector("#starsForMovies" + counter).append(creatingIMGTag);
           }
         
 
