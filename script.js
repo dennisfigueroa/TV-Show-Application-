@@ -3,37 +3,62 @@
 const apiCall = "https://api.themoviedb.org/3/discover/tv?api_key=04c35731a5ee918f014970082a0088b1&language=en-US&sort_by=popularity.desc&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false"; 
 
 const imageBaseURL = "https://image.tmdb.org/t/p/w500";
-
+const searchAPI = 'https://api.themoviedb.org/3/search/tv?&api_key=04c35731a5ee918f014970082a0088b1&query=';
 const creatingIMGTag = document.createElement('img'); 
 
-async function getTVShows() {
-    const response = await fetch(apiCall);
+const form = document.getElementById("form"); 
+const search = document.getElementById("search"); 
+
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault(); 
+  const searchWord = search.value; 
+  if (searchWord) {
+      getTVShows(searchAPI+ searchWord); 
+      search.value =''; 
+  }
+})
+
+
+async function getTVShows(url) {
+    const response = await fetch(url);
     const information = await response.json(); 
     
-    console.log(information); 
-      getPosters(information); 
-      RatingStars(information); 
-    }
+    getPosters(information.results);
+    RatingStars(information); 
+}
 
-    function getPosters(information) {
-      let html = ''; 
+
+function getPosters(tvShows) {
+  
+  //clear main
+  main.innerHTML=''; 
+  
+  let html = ''; 
       let counter = 0; 
-      information.results.forEach((tvShow) =>  {
+      tvShows.forEach((tvShow) =>  {
         counter = counter + 1; 
-        html += '<div class = "movie"><img src = "https://image.tmdb.org/t/p/w500/'+tvShow.poster_path+'"><div id = "starsForMovies'+counter+'" class ="rating"></div></div>';
+        if (tvShow.poster_path != null) {
+          html += '<div class = "movie"><img src = "https://image.tmdb.org/t/p/w500/'+tvShow.poster_path+'"><div id = "starsForMovies'+counter+'" class ="rating"></div></div>';
+        }
+        
       });
 
-      document.body.innerHTML = html; 
+      document.getElementById("main").innerHTML = html; 
     }
 
 
-      function RatingStars (information) {
+function RatingStars(information) {
 
         let counter = 0; 
 
         information.results.forEach((tvShow) => {
 
           counter = counter + 1; 
+          
+
+
+
           if (tvShow.vote_average > 9.4) {
             const creatingIMGTag = document.createElement('img'); 
             creatingIMGTag.src = "stars/5.png"; 
@@ -88,6 +113,8 @@ async function getTVShows() {
 
 
 
-getTVShows(); 
+
+
+getTVShows(apiCall); 
 
 
