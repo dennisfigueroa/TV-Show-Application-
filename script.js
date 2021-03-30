@@ -1,11 +1,11 @@
 
 //This will not change as the API will always be constant
 const apiCall = "https://api.themoviedb.org/3/discover/tv?api_key=04c35731a5ee918f014970082a0088b1&language=en-US&sort_by=popularity.desc&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false"; 
+const movieApiCall = "https://api.themoviedb.org/3/discover/movie?api_key=04c35731a5ee918f014970082a0088b1&language=en-US&sort_by=popularity.desc&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false"; 
 
 const imageBaseURL = "https://image.tmdb.org/t/p/w500";
 const searchAPI = 'https://api.themoviedb.org/3/search/tv?&api_key=04c35731a5ee918f014970082a0088b1&query=';
 const creatingIMGTag = document.createElement('img'); 
-
 const form = document.getElementById("form"); 
 const search = document.getElementById("search"); 
 
@@ -19,14 +19,26 @@ form.addEventListener('submit', (e) => {
   }
 })
 
+//let movieButton = document.getElementById("movies"); 
+//movieButton.addEventListener("click", getTVShows(movieApiCall)); 
+
+//let tvButton = document.getElementById("popular"); 
+//tvButton.addEventListener("click", getTVShows(apiCall)); 
+
+
 
 async function getTVShows(url) {
     const response = await fetch(url);
     const information = await response.json(); 
     
     getPosters(information.results);
-    RatingStars(information); 
+ 
 }
+
+
+
+
+
 
 
 function getPosters(tvShows) {
@@ -39,7 +51,7 @@ function getPosters(tvShows) {
       tvShows.forEach((tvShow) =>  {
         counter = counter + 1; 
         if (tvShow.poster_path != null) {
-          html += '<div class = "movie"><img src = "https://image.tmdb.org/t/p/w500/'+tvShow.poster_path+'"><div id = "starsForMovies'+counter+'" class ="rating"></div></div>';
+          html += '<div class = "movie"><img src = "https://image.tmdb.org/t/p/w500/'+tvShow.poster_path+'"></div>';
         }
         
       });
@@ -48,7 +60,7 @@ function getPosters(tvShows) {
     }
 
 
-function RatingStars(information) {
+/*function RatingStars(information) {
 
         let counter = 0; 
 
@@ -89,6 +101,7 @@ function RatingStars(information) {
     
         });
       }
+      */
       //console.log(tvShow.vote_average)
 
   /*information.results.forEach((tvShow) => {
@@ -116,5 +129,6 @@ function RatingStars(information) {
 
 
 getTVShows(apiCall); 
+//getTVShows(movieApiCall); 
 
 

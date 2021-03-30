@@ -13,9 +13,19 @@
     
     <body>
         <header> 
+          <nav class="navbar">
+            <h2 style="color:white;">TV Show Web Application</h2>
+            <div class=navbar-links>
+             <ul>
+              <li><button id="popular" onclick="getTVShows(apiCall)">Popular</button></li>
+              <li><button id="movies" onclick="getTVShows(movieApiCall)">Movies</button> </li>
+             <li>Example3</li>
+            </ul>
+            </div>
           <form id="form"> 
           <input type="text" id="search" placeholder="Search" class ="search">
           </form>
+        </nav>
         </input> 
         </header>
             <div class = "container"> 

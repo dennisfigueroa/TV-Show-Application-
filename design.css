@@ -2,8 +2,10 @@
     box-sizing:inherit; 
 }
 
-html {
+html, body {
     box-sizing: border-box; 
+    text-align: center;
+
 }
 
 body {
@@ -18,7 +20,7 @@ main {
 
 .movie {
     width: 240px;
-    height: 400px;
+    height: auto;
     border-radius: 3px; 
     box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2); 
     margin:2rem; 
@@ -56,18 +58,37 @@ main {
     display:flex; 
     flex-wrap: wrap; 
     flex-direction: row;
+  
 }
 
-header {
-    background-color: #373b69; 
+
+.navbar {
     display: flex !important; 
-    justify-content: flex-end; 
+    justify-content: space-between; 
+    align-items: center;
+    background-color: #373b69; 
+   
     padding: 1.5rem; 
+
 }
 
-heder input {
+header input {
     background-color: transparent;
     border: 2px solid #22254b;
     border-radius: 50px; 
     
+}
+.navbar-links ul {
+    margin:0;
+    padding:0;
+    display:flex;
+    flex: 1 0 0px;
+    
+}
+.navbar-links li {
+    list-style: none;
+    color:white;
+    padding: 1rem;
+   
+   
 }
