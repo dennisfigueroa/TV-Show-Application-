@@ -26,7 +26,6 @@ form.addEventListener('submit', (e) => {
 //tvButton.addEventListener("click", getTVShows(apiCall)); 
 
 
-
 async function getTVShows(url) {
     const response = await fetch(url);
     const information = await response.json(); 
@@ -34,9 +33,6 @@ async function getTVShows(url) {
     getPosters(information.results);
  
 }
-
-
-
 
 
 
@@ -51,7 +47,8 @@ function getPosters(tvShows) {
       tvShows.forEach((tvShow) =>  {
         counter = counter + 1; 
         if (tvShow.poster_path != null) {
-          html += '<div class = "movie"><img src = "https://image.tmdb.org/t/p/w500/'+tvShow.poster_path+'"></div>';
+          html += '<div class = "movie"><img src = "https://image.tmdb.org/t/p/w500/'+tvShow.poster_path+'"><h6>'+tvShow.name+'</h6></div>';
+          console.log(tvShow); 
         }
         
       });

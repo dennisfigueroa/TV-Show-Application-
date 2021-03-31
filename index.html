@@ -8,6 +8,8 @@
       
       <link rel="stylesheet" href="design.css">
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+
     
     </head>
     
@@ -17,9 +19,9 @@
             <h2 style="color:white;">TV Show Web Application</h2>
             <div class=navbar-links>
              <ul>
-              <li><button id="popular" onclick="getTVShows(apiCall)">Popular</button></li>
+              <li><button id="popular" onclick="getTVShows(apiCall)">TV Show</button></li>
               <li><button id="movies" onclick="getTVShows(movieApiCall)">Movies</button> </li>
-             <li>Example3</li>
+
             </ul>
             </div>
           <form id="form"> 
@@ -29,7 +31,21 @@
         </input> 
         </header>
             <div class = "container"> 
-              
+             
+              <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-secondary active">
+                   Most Popular
+                </label>
+                <label class="btn btn-secondary">
+                  Trending
+                </label>
+                <label class="btn btn-secondary">
+                 Highest Rated
+                </label>
+              </div> 
+
+
+
             </div>
         
         <main id ="main">

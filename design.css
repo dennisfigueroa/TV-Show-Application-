@@ -11,6 +11,7 @@ html, body {
 body {
     margin: 0; 
     background-color: #85DCBA  !important;
+
 }
 
 main {
@@ -58,7 +59,9 @@ main {
     display:flex; 
     flex-wrap: wrap; 
     flex-direction: row;
-  
+    padding-left:400px;
+    padding-right:400px;
+
 }
 
 
@@ -87,8 +90,12 @@ header input {
 }
 .navbar-links li {
     list-style: none;
-    color:white;
+    color:black;
     padding: 1rem;
+ 
    
-   
+}
+
+.button {
+    background-color: black;
 }
